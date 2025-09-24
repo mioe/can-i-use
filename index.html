@@ -19,7 +19,7 @@
 		<script>
 			;(function () {
 				const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-				const setting = localStorage.getItem('lucky-local:theme') || 'auto'
+				const setting = localStorage.getItem('can-i-use:theme') || 'auto'
 				if (setting === 'dark' || (setting === 'auto' && prefersDark))
 					document.documentElement.classList.toggle('dark', true)
 			})()

@@ -232,7 +232,7 @@ const formatDate = (value: Dayjs) => (value?.isValid() ? value.format('DD MMM YY
 			</h3>
 
 			<div class="flex flex-col gap-[12px]">
-				<article class="p-[16px] border rounded bg-white/70 flex flex-col gap-[8px]">
+				<article class="p-[16px] border rounded bg-white/30 flex flex-col gap-[8px]">
 					<h4>Итог</h4>
 					<p>Базовая стоимость: <strong>{{ formatCurrency(fullPrice) }}</strong></p>
 					<p>Скидка за уже оплаченные лицензии: <strong>{{ formatCurrency(discount) }}</strong></p>
@@ -240,7 +240,7 @@ const formatDate = (value: Dayjs) => (value?.isValid() ? value.format('DD MMM YY
 					<p>Следующая оплата: <strong>{{ formatDate(nextPaymentDate) }}</strong></p>
 				</article>
 
-				<article class="p-[16px] border rounded bg-white/70 flex flex-col gap-[10px]">
+				<article class="p-[16px] border rounded bg-white/30 flex flex-col gap-[10px]">
 					<h4>Стоимость 1 лицензии в день</h4>
 					<p class="text-sm">
 						Средняя: <strong>{{ formatCurrency(averageDiscountDailyPrice) }}</strong>
@@ -252,12 +252,12 @@ const formatDate = (value: Dayjs) => (value?.isValid() ? value.format('DD MMM YY
 							class="flex flex-col"
 						>
 							<span>{{ formatDate(segment.start) }} → {{ formatDate(segment.end) }}</span>
-							<span class="text-sm text-slate-600">{{ segment.days }} дн. из {{ segment.monthDays }} · {{ formatCurrency(segment.perDay) }} / день</span>
+							<span class="text-sm">{{ segment.days }} дн. из {{ segment.monthDays }} · {{ formatCurrency(segment.perDay) }} / день</span>
 						</li>
 					</ul>
 				</article>
 
-				<article class="p-[16px] border rounded bg-white/70 flex flex-col gap-[8px]">
+				<article class="p-[16px] border rounded bg-white/30 flex flex-col gap-[8px]">
 					<h4>Разница по дням между датами</h4>
 					<p>{{ extensionDurationDays }} дн.</p>
 				</article>
