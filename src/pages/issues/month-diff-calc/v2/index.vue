@@ -4,6 +4,8 @@ import type { Dayjs } from 'dayjs'
 import dayjs from 'dayjs'
 import { computed, ref } from 'vue'
 
+import PromptRaw from './prompt.md?raw'
+
 const costPerPiece = ref(500)
 const initCount = ref(4)
 const newCount = ref(5)
@@ -51,14 +53,6 @@ const extensionDurationDays = computed(() => {
 	return end.diff(start, 'day')
 })
 
-const dailyCostToday = computed(() => {
-	const today = nowAtDate.value
-	if (!today.isValid() || costPerPiece.value <= 0) {
-		return 0
-	}
-	return costPerPiece.value / today.daysInMonth()
-})
-
 const fullPrice = computed(() => {
 	const start = extensionStartDate.value
 	const end = extensionEndDate.value
@@ -68,16 +62,45 @@ const fullPrice = computed(() => {
 	return calculateRangeCost(start, end, newCount.value)
 })
 
+const averageDiscountDailyPrice = computed(() => {
+	const start = nowAtDate.value
+	const end = expAtDate.value
+	if (!start.isValid() || !end.isValid() || costPerPiece.value <= 0) {
+		return 0
+	}
+
+	const monthsDiff = end.diff(start, 'month', true)
+	if (monthsDiff <= 0) {
+		return costPerPiece.value / start.daysInMonth()
+	}
+
+	const daysCount = Math.max(end.diff(start, 'day'), 1)
+	const averageDaysInMonth = daysCount / monthsDiff
+	if (!Number.isFinite(averageDaysInMonth) || averageDaysInMonth <= 0) {
+		return 0
+	}
+
+	return costPerPiece.value / averageDaysInMonth
+})
+
 const discount = computed(() => {
 	const start = nowAtDate.value
 	const end = expAtDate.value
 	if (!start.isValid() || !end.isValid() || initCount.value <= 0 || costPerPiece.value <= 0) {
 		return 0
 	}
-	if (!end.isAfter(start)) {
-		return costPerPiece.value * initCount.value
+
+	const daysCount = Math.max(end.diff(start, 'day'), 0)
+	if (daysCount <= 0) {
+		return 0
 	}
-	return calculateRangeCost(start, end, initCount.value)
+
+	const averageDailyPrice = averageDiscountDailyPrice.value
+	if (averageDailyPrice <= 0) {
+		return 0
+	}
+
+	return Number((averageDailyPrice * daysCount * initCount.value).toFixed(2))
 })
 
 const totalToPay = computed(() => {
@@ -164,8 +187,13 @@ const formatDate = (value: Dayjs) => (value?.isValid() ? value.format('DD MMM YY
 </script>
 
 <template>
-	<div class="flex gap-[16px]">
-		<section class="flex flex-col gap-[16px]">
+	<section>
+		<h3>Prompt</h3>
+		<pre class="text-[12px] text-wrap">{{ PromptRaw }}</pre>
+	</section>
+
+	<div class="flex flex-wrap gap-[16px]">
+		<section class="flex flex-col gap-[16px] min-w-[200px]">
 			<h3 class="mb-[-8px]">
 				Refs:
 			</h3>
@@ -196,7 +224,7 @@ const formatDate = (value: Dayjs) => (value?.isValid() ? value.format('DD MMM YY
 			</label>
 		</section>
 
-		<section class="flex flex-1 flex-col gap-[16px]">
+		<section class="flex flex-1 flex-col gap-[16px] min-w-[200px]">
 			<h3 class="mb-[-8px]">
 				Computed:
 			</h3>
@@ -213,7 +241,7 @@ const formatDate = (value: Dayjs) => (value?.isValid() ? value.format('DD MMM YY
 				<article class="p-[16px] border rounded bg-white/70 flex flex-col gap-[10px]">
 					<h4>Стоимость 1 лицензии в день</h4>
 					<p class="text-sm">
-						Сегодня: <strong>{{ formatCurrency(dailyCostToday) }}</strong>
+						Средняя: <strong>{{ formatCurrency(averageDiscountDailyPrice) }}</strong>
 					</p>
 					<ul class="flex flex-col gap-[10px]">
 						<li
