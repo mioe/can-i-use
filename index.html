@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+		/>
+
+		<!-- pwa -->
+		<meta name="theme-color" content="#000000" />
+
+		<!-- favicons -->
+		<link rel="icon" type="image/png" href="/can-i-use/favicons/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/can-i-use/favicons/favicon.svg" />
+		<link rel="shortcut icon" href="/can-i-use/favicons/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/can-i-use/favicons/apple-touch-icon.png" />
+
+		<script>
+			;(function () {
+				const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+				const setting = localStorage.getItem('lucky-local:theme') || 'auto'
+				if (setting === 'dark' || (setting === 'auto' && prefersDark))
+					document.documentElement.classList.toggle('dark', true)
+			})()
+		</script>
+
+		<title>Can I Use (sandbox)</title>
+		<script type="module" crossorigin src="/can-i-use/assets/index-8GzrsXsL.js"></script>
+		<link rel="stylesheet" crossorigin href="/can-i-use/assets/index-DIh_bMjn.css">
+	<link rel="manifest" href="/can-i-use/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/can-i-use/registerSW.js"></script></head>
+	<body
+		class="relative min-h-screen w-full overflow-x-hidden text-offgray dark:text-offgray-300 bg-[#f7f7f2f5] dark:bg-[hsl(218,_13%,_7.5%)]"
+	>
+		<div id="app"></div>
+	</body>
+</html>
