@@ -364,12 +364,20 @@ h6 {
 	color: var(--color-blue-300);
 }
 
-.primary-color {
+.primary-color,
+.router-link-exact-active {
 	color: var(--color-accent-blue);
 }
 
-:root.dark .primary-color {
+:root.dark .primary-color,
+:root.dark .router-link-exact-active {
 	color: var(--color-blue-300);
+}
+
+a {
+	cursor: pointer;
+	text-decoration: underline;
+	text-decoration-style: dashed;
 }
 
 h1 {
