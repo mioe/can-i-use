@@ -144,7 +144,9 @@ const hasSummaryData = computed(
 <template>
 	<div>
 		<h3>Prompt:</h3>
-		<pre>дано:
+		<pre>> cursor 1.6.23 (Universal) | gpt-5-codex MAX | 09/25/2025
+
+дано:
 * x: дата последней покупки лицензий
 * y: дата текущего дня (имитация now)
 * costPerPiece: цена за одну лицензию
