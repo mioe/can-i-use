@@ -18,6 +18,8 @@ export default defineConfig(({ command, mode }) => {
 	console.warn('🦕 vite.config.ts/defineConfig', command, mode)
 
 	return {
+		base: mode === 'development' ? './' : '/can-i-use/',
+
 		resolve: {
 			alias: {
 				'~/': `${path.resolve(__dirname, 'src')}/`,

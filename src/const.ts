@@ -1,1 +1,1 @@
-export const APP_PREFIX = 'lucky-local'
+export const APP_PREFIX = 'can-i-use'
