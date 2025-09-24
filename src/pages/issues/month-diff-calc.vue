@@ -2,15 +2,14 @@
 import type { Dayjs } from 'dayjs'
 
 import dayjs from 'dayjs'
-import { computed, ref } from 'vue'
 
 const costPerPiece = ref(500)
 const initCount = ref(4)
 const newCount = ref(4)
-const months = ref(1)
+const months = ref(2)
 
-const x = ref('')
-const y = ref('')
+const x = ref('2025-08-01')
+const y = ref(dayjs().format('YYYY-MM-DD'))
 
 const monthlyCost = computed(() => {
 	const value = Number(costPerPiece.value)
@@ -34,6 +33,17 @@ const monthsToBill = computed(() => {
 
 const parsedLastPurchase = computed<Dayjs | null>(() => (x.value ? dayjs(x.value) : null))
 const parsedCurrentDate = computed<Dayjs | null>(() => (y.value ? dayjs(y.value) : null))
+
+const daysDifference = computed(() => {
+	if (!parsedLastPurchase.value || !parsedCurrentDate.value) {
+		return null
+	}
+
+	return parsedCurrentDate.value.startOf('day').diff(
+		parsedLastPurchase.value.startOf('day'),
+		'day',
+	)
+})
 
 function buildMonthlyPeriods(start: Dayjs, count: number) {
 	return Array.from({ length: count }, (_, index) => {
@@ -132,7 +142,7 @@ const hasSummaryData = computed(
 </script>
 
 <template>
-	<main class="p-[8px] flex flex-col gap-[16px]">
+	<main class="p-[8px] pb-[48px] flex flex-col gap-[16px]">
 		<header>
 			<h2>month-diff-calc</h2>
 		</header>
@@ -220,6 +230,17 @@ style:
 							<span class="text-sm font-semibold">{{ period.days }} дн. · {{ currencyFormatter.format(period.dailyCost) }} / день</span>
 						</li>
 					</ul>
+				</div>
+				<div class="p-[12px] border rounded bg-white/20">
+					<h4 class="mb-[8px]">
+						Разница по дням между датами
+					</h4>
+					<p v-if="daysDifference === null">
+						Заполните даты X и Y, чтобы рассчитать разницу.
+					</p>
+					<p v-else>
+						{{ daysDifference }} дн.
+					</p>
 				</div>
 			</section>
 		</div>
