@@ -120,6 +120,7 @@ interface RangeSegment {
 	end: Dayjs
 	days: number
 	perDay: number
+	monthDays: number
 }
 
 const extensionSegments = computed<RangeSegment[]>(() => {
@@ -175,6 +176,7 @@ function buildRangeSegments(start: Dayjs, end: Dayjs): RangeSegment[] {
 			end: chunkEnd,
 			days: daysCount,
 			perDay,
+			monthDays,
 		})
 		cursor = chunkEnd
 	}
@@ -250,7 +252,7 @@ const formatDate = (value: Dayjs) => (value?.isValid() ? value.format('DD MMM YY
 							class="flex flex-col"
 						>
 							<span>{{ formatDate(segment.start) }} → {{ formatDate(segment.end) }}</span>
-							<span class="text-sm text-slate-600">{{ segment.days }} дн. · {{ formatCurrency(segment.perDay) }} / день</span>
+							<span class="text-sm text-slate-600">{{ segment.days }} дн. из {{ segment.monthDays }} · {{ formatCurrency(segment.perDay) }} / день</span>
 						</li>
 					</ul>
 				</article>
