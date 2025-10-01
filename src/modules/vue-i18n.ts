@@ -1,10 +1,10 @@
 import type { PluralizationRule } from 'vue-i18n'
 
 import messages from '@intlify/unplugin-vue-i18n/messages'
-import Cookies from 'universal-cookie'
 import { createI18n } from 'vue-i18n'
 
-const cookies = new Cookies(null, { path: '/' })
+import { APP_PREFIX } from '~/const'
+
 type Locale = 'en' | 'ru'
 
 // Russian, Ukrainian, etc
@@ -35,14 +35,15 @@ function slavicLanguagesRule(
 	return choicesLength < 4 ? 2 : 3
 }
 
-function isAvailableLanguageTypeGuard(lang: string | null): lang is Locale {
-	return lang !== null && ['en', 'ru'].includes(lang)
+function isAvailableLanguageTypeGuard(locale: string | null): locale is Locale {
+	return locale !== null && ['en', 'ru'].includes(locale)
 }
 
 export function detectDefaultLocale(): Locale {
-	const cookieLang = cookies.get('lang')
-	if (isAvailableLanguageTypeGuard(cookieLang)) {
-		return cookieLang
+	const l = localStorage.getItem(`${APP_PREFIX}:locale`)
+	if (isAvailableLanguageTypeGuard(l)) {
+		document.documentElement.setAttribute('lang', l)
+		return l
 	}
 
 	return 'en'

@@ -19,7 +19,6 @@
 		"@vueuse/math": "^13.9.0",
 		"dayjs": "^1.11.18",
 		"pinia": "^3.0.3",
-		"universal-cookie": "^8.0.1",
 		"vue": "^3.5.22",
 		"vue-i18n": "^11.1.12",
 		"vue-router": "^4.5.1"
