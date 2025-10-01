@@ -10,8 +10,8 @@ const child = router.options.routes.find(r => r.path === '/issues')?.children?.f
 )!.children?.reverse()
 
 onMounted(() => {
-	const lastVersion = child![0].path
-	if (route.name === '/issues/month-diff-calc') {
+	const lastVersion = child?.[0]?.path
+	if (route.name === '/issues/month-diff-calc' && lastVersion) {
 		router.replace({ path: `${route.name}/${lastVersion}` })
 	}
 })

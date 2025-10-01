@@ -10,6 +10,7 @@ const appStore = useAppStore()
 
 		<div>
 			<button
+				tabindex="0"
 				class="text-[.875rem] p-2 rounded-sm flex shrink-0 gap-3 w-full cursor-pointer [content-visibility:_auto] items-center dark:text-white data-[selected=true]:bg-offgray-100/50 hover:bg-offgray-100/50 dark:data-[selected=true]:bg-offgray-950 dark:hover:bg-offgray-950"
 				@click="appStore.theme = appStore.isDark ? 'light' : 'dark'"
 			>
@@ -17,6 +18,7 @@ const appStore = useAppStore()
 				<span>{{ appStore.isDark ? 'Turn light mode on' : 'Turn dark mode on' }}</span>
 			</button>
 			<button
+				tabindex="0"
 				class="text-[.875rem] p-2 rounded-sm flex shrink-0 gap-3 w-full cursor-pointer [content-visibility:_auto] items-center dark:text-white data-[selected=true]:bg-offgray-100/50 hover:bg-offgray-100/50 dark:data-[selected=true]:bg-offgray-950 dark:hover:bg-offgray-950" @click="appStore.theme = 'auto'"
 			>
 				<div class="i-mi:carbon-application-web h-[14px] w-[14px]" />
