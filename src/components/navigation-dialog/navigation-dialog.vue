@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import NavigationDialogOther from './navigation-dialog.other.vue'
 import NavigationDialogTheme from './navigation-dialog.theme.vue'
 
 const navigationDialogRef = shallowRef<HTMLDialogElement | undefined>()
@@ -7,8 +8,13 @@ function open() {
 	navigationDialogRef.value?.showModal()
 }
 
+function close() {
+	navigationDialogRef.value?.close()
+}
+
 defineExpose({
 	open,
+	close,
 })
 </script>
 
@@ -18,7 +24,10 @@ defineExpose({
 			ref="navigationDialogRef"
 			class="text-offgray m-auto border border-gray-300 rounded-md bg-white overflow-clip dark:text-offgray-300 dark:border-gray-600/20 dark:bg-[hsl(218,_13%,_9%)]"
 		>
-			<NavigationDialogTheme />
+			<div class="p-[4px] flex flex-col gap-[4px]">
+				<NavigationDialogTheme />
+				<NavigationDialogOther @close="close" />
+			</div>
 
 			<footer class="p-2 border-t border-gray-200 gap-[10px] hidden items-center bottom-0 left-0 justify-end sticky z-1 dark:border-gray-600/20 md:flex">
 				<div class="text-xs flex gap-[6px] items-center">

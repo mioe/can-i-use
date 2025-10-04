@@ -3,7 +3,7 @@ const appStore = useAppStore()
 </script>
 
 <template>
-	<section class="p-[4px] flex flex-col w-full">
+	<section class="flex flex-col w-full">
 		<p class="text-[10px] font-mono mx-[8px] my-[2px] op-[80%] uppercase">
 			Switch theme
 		</p>
