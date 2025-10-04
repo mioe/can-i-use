@@ -1,4 +1,4 @@
-import{d as G,m as d,n as a,c as Y,a as n,t as r,u as H,p,v as f,l as v,F as I,r as J,o as B}from"./index-C-7IwWmQ.js";import{d as F}from"./dayjs.min-BAJkae7J.js";const K=`> cursor 1.6.23 (Universal) | gpt-5-codex MAX | 09/25/2025
+import{d as G,m as d,n as a,c as Y,a as n,t as r,u as H,p,v as f,l as v,F as I,r as J,o as B}from"./index-Vn0mbn0d.js";import{d as F}from"./dayjs.min-BAJkae7J.js";const K=`> cursor 1.6.23 (Universal) | gpt-5-codex MAX | 09/25/2025
 
 ## дано:
 
