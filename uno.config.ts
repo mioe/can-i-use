@@ -8,6 +8,9 @@ import {
 export default defineConfig({
 	shortcuts: [
 		['link', 'text-blue underline underline-dashed'],
+		['bg-default', 'bg-[#f7f7f2f5] dark:bg-[hsl(218,_13%,_7.5%)]'],
+		['border-gray-default', 'border-gray-default-light dark:border-gray-default-dark'],
+		['nav-item', 'text-[.875rem] p-2 rounded-sm flex shrink-0 gap-3 w-full cursor-pointer items-center dark:text-white hover:bg-offgray-100/50 dark:hover:bg-offgray-950'],
 	],
 	theme: {
 		colors: {
@@ -264,9 +267,15 @@ export default defineConfig({
 	rules: [
 		['scrolling-touch', { '-webkit-overflow-scrolling': 'touch' }],
 		['anime', { transition: 'var(--transition)' }],
+		['border-gray-default-light', { 'border-color': 'color-mix(in oklab, var(--color-gray-300) 50%, transparent)' }],
+		['border-gray-default-dark', { 'border-color': 'color-mix(in oklab, var(--color-gray-300) 8%, transparent)' }],
 	],
 	presets: [
-		presetWind4(),
+		presetWind4({
+			preflights: {
+				reset: true,
+			},
+		}),
 		presetIcons({
 			warn: true,
 			collections: {

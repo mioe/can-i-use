@@ -22,6 +22,7 @@ declare module 'vue-router/auto-routes' {
     '/issues/month-diff-calc': RouteRecordInfo<'/issues/month-diff-calc', '/issues/month-diff-calc', Record<never, never>, Record<never, never>, '/issues/month-diff-calc/v1/' | '/issues/month-diff-calc/v2/'>,
     '/issues/month-diff-calc/v1/': RouteRecordInfo<'/issues/month-diff-calc/v1/', '/issues/month-diff-calc/v1', Record<never, never>, Record<never, never>>,
     '/issues/month-diff-calc/v2/': RouteRecordInfo<'/issues/month-diff-calc/v2/', '/issues/month-diff-calc/v2', Record<never, never>, Record<never, never>>,
+    '/issues/vee-validate-test': RouteRecordInfo<'/issues/vee-validate-test', '/issues/vee-validate-test', Record<never, never>, Record<never, never>>,
   }
 
   /**
@@ -49,6 +50,10 @@ declare module 'vue-router/auto-routes' {
     }
     'src/pages/issues/month-diff-calc/v2/index.vue': {
       routes: '/issues/month-diff-calc/v2/'
+      views: never
+    }
+    'src/pages/issues/vee-validate-test.vue': {
+      routes: '/issues/vee-validate-test'
       views: never
     }
   }

@@ -9,11 +9,11 @@ const buildDate = import.meta.env.VITE_BUILD_DATE
 		<section class="flex flex-col gap-[8px] items-center">
 			<h2>Vue playground for testing</h2>
 			<div class="flex flex-wrap gap-[8px] items-start justify-center">
-				<div class="grid-border-color p-[4px] border rounded bg-white/30 w-full dark:bg-black/20 md:w-auto">
+				<div class="p-[4px] border rounded bg-white/30 w-full border-gray-default dark:bg-black/20 md:w-auto">
 					<p>dependencies:</p>
 					<pre class="text-wrap">{{ dependencies }}</pre>
 				</div>
-				<div class="grid-border-color p-[4px] border rounded bg-white/30 w-full dark:bg-black/20 md:w-auto">
+				<div class="p-[4px] border rounded bg-white/30 w-full border-gray-default dark:bg-black/20 md:w-auto">
 					<p>devDependencies:</p>
 					<pre class="text-wrap">{{ devDependencies }}</pre>
 				</div>

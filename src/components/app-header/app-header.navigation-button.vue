@@ -15,7 +15,7 @@ whenever(logicAnd(meta, k, notUsingInput), () => {
 </script>
 
 <template>
-	<button aria-label="Command menu" type="button" class="text-sm text-black tracking-tight px-2.5 border border-transparent rounded-sm flex gap-1.5 h-8 cursor-pointer select-none text-nowrap transition-colors duration-75 items-center justify-center dark:text-offgray-50 px-1! hover:bg-offgray-100/50 disabled:opacity-50 disabled:cursor-not-allowed dark:hover:bg-offgray-500/10 lg:active:translate-y-px lg:active:scale-[.99]" @click="navigationDialogRef?.open()">
+	<button aria-label="Command menu" type="button" class="text-sm text-black tracking-tight px-2.5 border border-transparent rounded-sm flex gap-1.5 h-8 cursor-pointer select-none text-nowrap transition-colors duration-75 items-center justify-center dark:text-offgray-50 px-1! hover:bg-offgray-100/50 disabled:opacity-50 disabled:cursor-not-allowed active:translate-y-px active:scale-[.99] dark:hover:bg-offgray-500/10" @click="navigationDialogRef?.open()">
 		<div class="i-mi:carbon-search h-[15px] w-[15px]" />
 		<kbd aria-hidden="false" class="text-[.6875rem] text-gray-500 font-bold px-1.5 border border-gray-500/20 rounded-xs bg-gray-50/50 flex flex gap-0.5 items-center items-center dark:text-gray-300 dark:border-offgray-400/10 dark:bg-cream-900/10">
 			<div class="i-mi:CarbonMacCommand h-[10px] w-[10px]" :class="[{ 'primary-color': meta }]" />

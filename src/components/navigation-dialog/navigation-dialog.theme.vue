@@ -11,7 +11,7 @@ const appStore = useAppStore()
 		<div>
 			<button
 				tabindex="0"
-				class="text-[.875rem] p-2 rounded-sm flex shrink-0 gap-3 w-full cursor-pointer [content-visibility:_auto] items-center dark:text-white data-[selected=true]:bg-offgray-100/50 hover:bg-offgray-100/50 dark:data-[selected=true]:bg-offgray-950 dark:hover:bg-offgray-950"
+				class="nav-item"
 				@click="appStore.theme = appStore.isDark ? 'light' : 'dark'"
 			>
 				<div class="i-mi:carbon-moon h-[14px] w-[14px] dark:i-mi:carbon-sun" />
@@ -19,7 +19,8 @@ const appStore = useAppStore()
 			</button>
 			<button
 				tabindex="0"
-				class="text-[.875rem] p-2 rounded-sm flex shrink-0 gap-3 w-full cursor-pointer [content-visibility:_auto] items-center dark:text-white data-[selected=true]:bg-offgray-100/50 hover:bg-offgray-100/50 dark:data-[selected=true]:bg-offgray-950 dark:hover:bg-offgray-950" @click="appStore.theme = 'auto'"
+				class="nav-item"
+				@click="appStore.theme = 'auto'"
 			>
 				<div class="i-mi:carbon-application-web h-[14px] w-[14px]" />
 				<span>Follow the System's settings</span>

@@ -52,11 +52,6 @@
 
 	--transition: 0.25s cubic-bezier(0.175, 0.885, 0.32, 1);
 
-	--sh-default: 6px 6px 0 #074dcf0f, -6px -6px 0 #074dcf0f;
-	--sh-alt: 6px 6px 0 #074dcf0f;
-	--sh-alt-opposite: -6px -6px 0 #074dcf0f;
-
-
 	--safe-area-top: env(safe-area-inset-top);
 	--safe-area-right: env(safe-area-inset-right);
 	--safe-area-bottom: env(safe-area-inset-bottom);
@@ -336,14 +331,6 @@
 	--color-offgray-1000: #0b0c0e;
 }
 
-:root:not(.dark) {
-	--nav-bg-color: #f7f7f2f5;
-}
-
-:root.dark {
-	--nav-bg-color: #131518f2;
-}
-
 h1,
 h2,
 h3,
@@ -361,16 +348,6 @@ h6 {
 :root.dark h4,
 :root.dark h5,
 :root.dark h6 {
-	color: var(--color-blue-300);
-}
-
-.primary-color,
-.router-link-exact-active {
-	color: var(--color-accent-blue);
-}
-
-:root.dark .primary-color,
-:root.dark .router-link-exact-active {
 	color: var(--color-blue-300);
 }
 
@@ -402,12 +379,4 @@ pre,
 code {
 	font-family: 'JetBrains Mono', monospace;
 	font-weight: 400;
-}
-
-.grid-border-color {
-	border-color: color-mix(in oklab, var(--color-gray-300) 50%, transparent);
-}
-
-.grid-border-color:where(.dark, .dark *) {
-	border-color: color-mix(in oklab, var(--color-gray-300) 8%, transparent);
 }
